@@ -1,0 +1,13 @@
+.itemList-imgContainer {
+    margin-left: 15%;
+}
+.itemList-imgContainer > img{
+    max-width: 70%;
+}
+.item-img-box{
+    width: 30%;
+}
+.item-price-box{
+    padding-top: 40%;
+}
+

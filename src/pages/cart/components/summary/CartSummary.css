@@ -1,0 +1,46 @@
+.cart-summary-container{
+    border: 3px solid black;
+    /* border-radius: 8%; */
+}
+.cart-summary-title{
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+.cart-summary-title > h4{
+    text-align: center;
+}
+.summary-table{
+    padding-left: 4em;
+    
+}
+.summary-line > td:nth-child(2){
+   text-align: center;
+   padding-left: 5em;
+   position: relative;
+}
+.summary-line > td:nth-child(1){
+    width: 60%;
+ }
+.summary-line {
+    padding-bottom: 5%;
+}
+.summary-line-container{
+    margin-bottom: 1em;
+}
+.summary-total{
+    margin-top: 2em ;
+    border-top: 0.5px solid gray ;
+    padding-top : 1em ;
+}
+.btn-checkout{
+    margin-top: 1em;
+}
+.btn-backToMenu{
+    margin-top: 0.5em;
+}
+.btn-checkout >  button{
+    width: 100%;
+}
+.btn-backToMenu >  button{
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+.item-wrapper{
+    position: relative;
+    top: 25em;
+    padding-bottom: 1em;
+}
+.item-title{
+    width: 80% !important;
+    text-align: center;
+    margin-left: 1.5em;
+}
+.btn-container{
+    display: flex;
+    margin-left: 1.5em;
+}
+.btn-container > a{
+    margin-right: 0.5em;
+}

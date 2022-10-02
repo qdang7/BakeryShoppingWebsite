@@ -1,0 +1,52 @@
+.introduction{
+    /* background-image: url("https://www.tljus.com/wp-content/uploads/2019/11/home_topBanner.jpg"); */
+    margin-left: -13px;
+    position: absolute;
+}
+.introduction-text{
+    position: relative;
+
+    margin-top: 10em;
+    margin-left: 25em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.introduction-text > .introduction-text-h1{
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    width: 60%;
+    margin-left: 1.5em;
+}
+.introduction-text > p{
+    text-align: center;
+    color: white;
+    font-size: larger;
+    width: 80%;
+}
+.image-container{
+    position: absolute;
+    max-height: 50em;
+}
+.image-container > img{
+    max-width: 100vw;
+    /* height: 100vh; */
+    height: 80vh ;
+    width: 100vw;
+}
+.featured-products-container{
+    display: flex;
+    
+}
+.featured-products-section{
+    position: absolute;
+    bottom: -30em;
+    width: 100% !important;
+}
+.featured-products-section > h3 {
+    margin-left: 40%;
+    padding-bottom: 2em;
+    font-weight: bold;
+}
+.featured-products-item{
+    margin-left: 1em;
+}

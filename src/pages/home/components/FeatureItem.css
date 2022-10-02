@@ -1,0 +1,20 @@
+.thumnail-container > img{
+    width: 25em;
+    /* margin-left: -10px; */
+}
+.description{
+
+}
+.description > h4{
+    text-align: center;
+    width: 90%;
+    color: #0d4732;
+}
+
+.description > p{
+    text-align: center;
+    font-size: medium;
+    width: 90%;
+    padding-left: 1em;
+    line-height: 1.25em;
+}

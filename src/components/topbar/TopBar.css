@@ -1,0 +1,33 @@
+.topbar-container{
+    border-bottom: 0.5px solid gray;
+}
+.topbar-container{
+    display: flex;
+}
+.logo-container > .logo {
+    margin-top: 1.5em;
+    margin-left: 2em;
+    height: 40%;
+}
+.logo-container{
+    vertical-align: middle;
+}
+
+.topbar-navigator-container{
+    display: flex;
+    padding-bottom: 1em;
+    margin-left: 5%;
+}
+.topbar-navigator-item, .identitfication-item{
+    margin-left: 1.5em;
+    padding-top: 1em;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: larger;
+}
+.identification-container{
+    display: flex;
+    margin-left: 15%;
+}
+
