@@ -1,7 +1,8 @@
 import React from "react";
 import "./MenuDetailItem.css";
 interface IProps {
-
+    productName: string,
+    imageUrl: string
 }
 const MenuDetailItem: React.FC<IProps> = () => {
     return (

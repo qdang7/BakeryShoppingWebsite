@@ -1,0 +1,1 @@
+export const TOKEN_HAS_EXPIRED = "TokenHasExpired"

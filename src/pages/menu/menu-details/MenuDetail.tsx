@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useDispatch from "../../../hook/use-dispatch";
+import useSelector from "../../../hook/use-selector";
+import { _getAllProducts } from "../../../redux/slices/product/product.slice";
 import MenuDetailItem from "./menu-detail-item/MenuDetailItem";
 import "./MenuDetail.css";
-interface IProps{
+interface IProps {
 
 }
-const MenuDetail : React.FC<IProps> = () => {
+const MenuDetail: React.FC<IProps> = () => {
+    const dispatch = useDispatch();
+
+    const products = useSelector(state => state.product)
+
+    useEffect(() => {
+        dispatch(_getAllProducts())
+    },[])
     return (
         <div className="container-fluid">
             <div className="introduction-menu">
@@ -17,30 +27,11 @@ const MenuDetail : React.FC<IProps> = () => {
                 </div>
             </div>
             <div className="item-list row">
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
-                <div className="col-sm-3">
-                    <MenuDetailItem  />
-                </div>
+                {products.products.map(p => (
+                    <div className="col-sm-3">
+                        <MenuDetailItem productName={p.productName} imageUrl={p.imageUrl}  />
+                    </div>
+                ))}
             </div>
         </div>
     )

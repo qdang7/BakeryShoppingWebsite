@@ -1,16 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./TopBar.css";
 interface IProps {
 
 }
 const TopBar: React.FC<IProps> = () => {
+    const navigate = useNavigate();
     return (
         <div className="topbar-container">
             <div className="logo-container">
+                {/* <img className="logo" src="https://dangminhquan.blob.core.windows.net/bakeryshop/RDNLRD-NEW-TEMPLATE.jpg"/> */}
                 <img className="logo" src="https://www.tljus.com/wp-content/themes/tlj/images/Tous_les_Jours--logo.png"/>
             </div>
             <div className="topbar-navigator-container">
-                <div className="topbar-navigator-item">
+                <div className="topbar-navigator-item" onClick={() => navigate("/menu")}>
                     Menu
                 </div>
                 <div className="topbar-navigator-item">

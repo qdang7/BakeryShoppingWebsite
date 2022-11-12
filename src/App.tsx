@@ -7,6 +7,7 @@ import Menu from './pages/menu/Menu';
 import TopBar from './components/topbar/TopBar';
 import MenuDetail from './pages/menu/menu-details/MenuDetail';
 import Cart from './pages/cart/Cart';
+import Checkout from './pages/checkout/Checkout';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/menu' element={<Menu/>}></Route>
         <Route path='/menu/cake' element={<MenuDetail/>}></Route>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<Checkout />} />
       </Routes>
     </div>
   );
