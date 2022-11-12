@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BakeryShoppingWebsite/static/css/main.e920aeec.css",
+    "main.js": "/BakeryShoppingWebsite/static/js/main.4e1a9b85.js",
+    "static/js/787.df3892eb.chunk.js": "/BakeryShoppingWebsite/static/js/787.df3892eb.chunk.js",
+    "index.html": "/BakeryShoppingWebsite/index.html",
+    "main.e920aeec.css.map": "/BakeryShoppingWebsite/static/css/main.e920aeec.css.map",
+    "main.4e1a9b85.js.map": "/BakeryShoppingWebsite/static/js/main.4e1a9b85.js.map",
+    "787.df3892eb.chunk.js.map": "/BakeryShoppingWebsite/static/js/787.df3892eb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e920aeec.css",
+    "static/js/main.4e1a9b85.js"
+  ]
+}
