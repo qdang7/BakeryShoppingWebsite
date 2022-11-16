@@ -15,3 +15,9 @@
 .btn-container > a{
     margin-right: 0.5em;
 }
+.card-container > img{
+    /* height: 250px; */
+    /* max-height: 185px; */
+    /* max-width: 300px; */
+    object-fit: fill;
+}

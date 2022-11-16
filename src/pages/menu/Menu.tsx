@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import useDispatch from "../../hook/use-dispatch";
+import useSelector from "../../hook/use-selector";
+import { _getAllCategories } from "../../redux/slices/category/category.slice";
 import MenuItem from "./components/MenuItem";
 import "./Menu.css"
 interface IProps {
 
 }
 const Menu: React.FC<IProps> = () => {
+    const categories = useSelector(state => state.category)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(_getAllCategories())
+    },[])
+    const onNavigate = (cateID: string) => {
+        console.log("onNavigate called !")
+        navigate(`${location.pathname}/${cateID}`)
+    }
+
     return (
         <div className="container-fluid">
             <div className="introduction-menu">
@@ -17,30 +33,15 @@ const Menu: React.FC<IProps> = () => {
                 </div>
             </div>
             <div className="menu-item-container row">
-                <div className="col-sm-4">
+                {categories.categories.map(cate => (
+                    <div className="col-sm-4">
                     <MenuItem
-                        imageUrl="https://dangminhquan.blob.core.windows.net/bakeryshop/menu-catering.jpg"
-                        imageText="Bread & Pastry"
+                        imageUrl={cate.imageName}
+                        imageText={cate.categoryName}
+                        onClick={() => onNavigate(cate.categoryId ? cate.categoryId : "" )}
                     />
                 </div>
-                <div className="col-sm-4">
-                    <MenuItem
-                        imageUrl="https://dangminhquan.blob.core.windows.net/bakeryshop/menu-cake.jpg"
-                        imageText="Cake"
-                    />
-                </div>
-                <div className="col-sm-4">
-                    <MenuItem
-                        imageUrl="https://dangminhquan.blob.core.windows.net/bakeryshop/menu-beverage.jpg"
-                        imageText="Beverages"
-                    />
-                </div>
-                <div className="col-sm-4">
-                    <MenuItem
-                        imageUrl="https://dangminhquan.blob.core.windows.net/bakeryshop/menu-beverage.jpg"
-                        imageText="Beverages"
-                    />
-                </div>
+                ))}
             </div>
         </div>
     )

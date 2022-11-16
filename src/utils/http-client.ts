@@ -8,9 +8,9 @@ const _getConfig = (config?: AxiosRequestConfig) => {
         ...config,
         headers:{
             ...config?.headers,
-            Authorization: `Bearer ${
-                sessionStorage.getItem(TOKEN) || localStorage.getItem(TOKEN)
-            }`
+            // Authorization: `Bearer ${
+            //     sessionStorage.getItem(TOKEN) || localStorage.getItem(TOKEN)
+            // }`
         }
     }
 }
@@ -39,7 +39,7 @@ export const httpClient = {
         return _post(url, data, config)
     },
     put: <T = any, R = AxiosResponse<T>>(url: string, data?: any, config?: AxiosRequestConfig) => {
-        return _put(url, config)
+        return _put(url, data, config)
     },
     delete: <T = any, R = AxiosResponse<T>>(url: string, config?: AxiosRequestConfig) => {
         return _delete(url, config)

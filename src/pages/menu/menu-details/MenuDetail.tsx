@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
+import {useParams } from "react-router-dom";
 import useDispatch from "../../../hook/use-dispatch";
 import useSelector from "../../../hook/use-selector";
-import { _getAllProducts } from "../../../redux/slices/product/product.slice";
+import { _getAllProducts, _getProducts } from "../../../redux/slices/product/product.slice";
 import MenuDetailItem from "./menu-detail-item/MenuDetailItem";
 import "./MenuDetail.css";
 interface IProps {
-
+    
 }
-const MenuDetail: React.FC<IProps> = () => {
+const MenuDetail: React.FC<IProps> = ({}) => {
+    const {id} = useParams()
     const dispatch = useDispatch();
 
     const products = useSelector(state => state.product)
 
     useEffect(() => {
-        dispatch(_getAllProducts())
+        if(id){
+            dispatch(_getProducts(id))
+        }
     },[])
+
     return (
         <div className="container-fluid">
             <div className="introduction-menu">
@@ -28,8 +33,8 @@ const MenuDetail: React.FC<IProps> = () => {
             </div>
             <div className="item-list row">
                 {products.products.map(p => (
-                    <div className="col-sm-3">
-                        <MenuDetailItem productName={p.productName} imageUrl={p.imageUrl}  />
+                    <div key={p.productId} className="col-sm-3" >
+                        <MenuDetailItem product={p}/>
                     </div>
                 ))}
             </div>

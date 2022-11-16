@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { SUCCESS_STATUS_CODE } from "../../../constants/http-status-code"
 import { Product } from "./product.model"
-import { getAllProduct } from "./product.service"
+import { getAllProduct, getProducts } from "./product.service"
 
 export interface ProductState {
     products: Product[],
@@ -14,8 +14,18 @@ const initialState : ProductState = {
 
 const _getAllProducts = createAsyncThunk(
     "product/getAll",
-    async (params,thunk) => {
+    async () => {
         const result = await getAllProduct()
+        if(result.status == SUCCESS_STATUS_CODE){
+            return result.data
+        }
+    }
+)
+
+const _getProducts = createAsyncThunk(
+    "product/getProduct",
+    async (categoryID: string) => {
+        const result = await getProducts(categoryID)
         if(result.status == SUCCESS_STATUS_CODE){
             return result.data
         }
@@ -34,9 +44,37 @@ const productSlice = createSlice({
                 ...state,
                 isLoading: true
             }
+        });
+        builder.addCase(_getAllProducts.fulfilled, (state, response) => {
+            const result = response.payload?.result ? response.payload?.result : [] 
+            return {
+                ...state,
+                isLoading: false,
+                products: result
+            }
+        });
+        builder.addCase(_getProducts.pending , (state) => {
+            return{
+                ...state,
+                isLoading: true
+            }
+        });
+        builder.addCase(_getProducts.fulfilled, (state, response) => {
+            const result = response.payload?.result ? response.payload?.result : [] 
+            return {
+                ...state,
+                isLoading: false,
+                products: result
+            }
+        });
+        builder.addCase(_getProducts.rejected, (state) => {
+            return{
+                ...state,
+                isLoading: false
+            }
         })
     }
 })
 
 export default productSlice.reducer
-export {_getAllProducts}
+export {_getAllProducts, _getProducts}
