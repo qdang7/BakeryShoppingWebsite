@@ -8,6 +8,23 @@
     width: 30%;
 }
 .item-price-box{
-    padding-top: 40%;
+    padding-top: 47%;
 }
+.item-quantity{
+    padding-top: 15%;
+    padding-bottom: 25%;
+}
+.item-quantity > button {
+    border: transparent;
+    /* background-color: green; */
+    font-size: large;
+    font-weight: bold;
+}
+.btn-container-cart {
+    margin-top: 50%;
+    padding-top: 50%;
+    font-size: large;
+    font-weight: bold;
+}
+
 

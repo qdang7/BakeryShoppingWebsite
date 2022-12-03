@@ -5,11 +5,17 @@ import { getAllCategories, getCategoryByID } from "./category.service";
 export interface CategoryState {
     categories: Category[],
     isLoading: boolean,
+    selectedCategory : Category
 }
 
 const initialState : CategoryState = {
     categories: [],
     isLoading: false,
+    selectedCategory: {
+        categoryName: "",
+        imageName: "",
+        backgroundImage: ""
+    }
 }
 
 const _getAllCategories = createAsyncThunk("category/all", async () => {
@@ -50,10 +56,26 @@ const categorySlice = createSlice({
         builder.addCase(_getCategoryById.pending, (state) => {
             return {
                 ...state,
+                isLoading: true
+            }
+        });
+        
+        builder.addCase(_getCategoryById.rejected, (state) => {
+            return {
+                ...state,
                 isLoading: false
             }
-        } )
+        });
+        builder.addCase(_getCategoryById.fulfilled, (state, action) => {
+            const {result} = action.payload
+            return{
+                ...state,
+                selectedCategory: result,
+                isLoading: false
+            }
+        });
+        
     }
 })
 export default categorySlice.reducer
-export {_getAllCategories}
+export {_getAllCategories, _getCategoryById}

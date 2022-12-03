@@ -27,7 +27,7 @@ const TopBar: React.FC<IProps> = () => {
                 </div>
             </div>
             <div className="identification-container">
-                <div className="identitfication-item">
+                <div className="identitfication-item" onClick={() => navigate("/cart")}>
                     Cart
                 </div>
                 <div className="identitfication-item">

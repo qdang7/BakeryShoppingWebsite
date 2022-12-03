@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CART_SESSION_ITEM } from "../../../../constants/cart.constant";
+import { CartItem } from "../../../../redux/slices/cart/cart.model";
 import "./CheckoutOrder.css"
 interface IProps {
 
 }
 const CheckoutOrder: React.FC<IProps> = () => {
+    const navigate = useNavigate()
+    const encodedItems = sessionStorage.getItem(CART_SESSION_ITEM)
+    const [items, setItems] = useState<CartItem[]>([])
+    useEffect(() => {
+        if (encodedItems) {
+            setItems(JSON.parse(encodedItems))
+        }
+    }, [items])
+
+    const getCost = () => {
+        let cost = 0;
+        for(let itm of items){
+            cost += itm.product.discountedPrice * itm.quantity
+        } 
+        return cost
+    }
+
+    const getTotal = () => {
+        return getCost()
+    }
+
     return (
         <div>
             <div className="cart-summary-container">
@@ -12,28 +36,28 @@ const CheckoutOrder: React.FC<IProps> = () => {
                 </div>
                 <div className="summary-table">
                     <table>
-                        <div className="summary-line-container">
-                            <tr className="summary-line">
+                        <div className="checkout-line-container">
+                            <tr className="checkout-line">
                                 <td><b className="green-text">Cost:</b></td>
-                                <td>1200$</td>
+                                <td>{getCost()}$</td>
                             </tr>
                         </div>
-                        <div className="summary-line-container">
+                        {/* <div className="checkout-line-container">
                             <tr className="summary-line">
                                 <td><b className="green-text">Shipping fee:</b></td>
                                 <td>50$</td>
                             </tr>
-                        </div>
-                        <div className="summary-line-container">
-                            <tr className="summary-line">
-                                <td><b className="green-text">Discount:</b></td>
-                                <td>25%</td>
+                        </div> */}
+                        <div className="checkout-line-container">
+                            <tr className="checkout-line">
+                                <td className="checkout-line-td"><b className="green-text">Discount:</b></td>
+                                <td>0%</td>
                             </tr>
                         </div>
-                        <div className="summary-line-container summary-total">
-                            <tr className="summary-line ">
-                                <td><b className="green-text">Total:</b></td>
-                                <td><b>1250$</b></td>
+                        <div className="checkout-line-container summary-total">
+                            <tr className="checkout-line ">
+                                <td className="checkout-line-td"><b className="green-text">Total:</b></td>
+                                <td className="checkout-line-td"><b>{getTotal()}$</b></td>
                             </tr>
                         </div>
                     </table>
@@ -51,7 +75,7 @@ const CheckoutOrder: React.FC<IProps> = () => {
                 <button className="btn btn-success">Checkout</button>
             </div>
             <div className="btn-backToMenu">
-                <button className="btn btn-danger">Back to cart</button>
+                <button className="btn btn-danger" onClick={() => navigate("/cart")}>Back to cart</button>
             </div>
         </div>
     )

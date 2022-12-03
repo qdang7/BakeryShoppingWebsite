@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { CART_SESSION_ITEM } from "../../../../constants/cart.constant";
 import useDispatch from "../../../../hook/use-dispatch";
 import useSelector from "../../../../hook/use-selector";
@@ -33,6 +34,10 @@ const MenuDetailItem: React.FC<IProps> = ({product}) => {
                 })
             }
             sessionStorage.setItem(CART_SESSION_ITEM, JSON.stringify(items))
+            toast.success("Added !", {
+                position: toast.POSITION.BOTTOM_CENTER,
+                autoClose: 1500,
+            });
         }
     }
     return (
